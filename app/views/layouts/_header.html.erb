@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:black;">
+    <%= image_tag("LTE_Logo_Black.png", style:"height:50px;width:auto;padding-right:2em", :alt=> "LTE Logo") %>
+    <%= link_to "Home", root_path, class:"navbar-brand", style:"color:white;" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+            <!-- 
+            FUTURE WORK, add a route, html page and controller for a RACES page for a menu of all races
+             -->
+                <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+                Races
+                </a>
+                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to "President", presidents_path, class:"nav-link", style:"color:white;" %>
+                <%= link_to "Senate", senates_path, class:"nav-link", style:"color:white;" %>
+                <%= link_to "House", houses_path, class:"nav-link", style:"color:white;" %>
+                <%= link_to "Governor", governors_path, class:"nav-link", style:"color:white;" %>
+                <%= link_to "Special/Misc", miscs_path, class:"nav-link", style:"color:white;" %>
+                </div>
+            </li>
+            <li class="nav-item active">
+                <%= link_to "News", news_index_path, class:"navbar-brand", style:"color:white;" %>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  target="_blank" href="https://www.discord.gg/LTE" style="color:white;">Join Our Discord!</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.buymeacoffee.com/ltelections" style="color:white;">Donate to Our Devs!</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $(".dropdown-toggle").dropdown();
+        });
+    </script>
+</nav>

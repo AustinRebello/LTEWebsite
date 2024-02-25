@@ -1,0 +1,2 @@
+class Senate < ApplicationRecord
+end

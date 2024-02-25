@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Governors</h1>
+
+<div id="governors">
+  <% @governors.each do |governor| %>
+    <%= render governor %>
+    <p>
+      <%= link_to "Show this governor", governor %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New governor", new_governor_path %>

@@ -1,0 +1,27 @@
+<%= form_with(model: president) do |form| %>
+  <% if president.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(president.errors.count, "error") %> prohibited this president from being saved:</h2>
+
+      <ul>
+        <% president.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.text_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

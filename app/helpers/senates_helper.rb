@@ -1,0 +1,2 @@
+module SenatesHelper
+end

@@ -1,0 +1,32 @@
+<%= form_with(model: senate) do |form| %>
+  <% if senate.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(senate.errors.count, "error") %> prohibited this senate from being saved:</h2>
+
+      <ul>
+        <% senate.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.text_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.label :senate_class, style: "display: block" %>
+    <%= form.text_field :senate_class %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

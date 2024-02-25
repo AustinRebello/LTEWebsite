@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Senates</h1>
+
+<div id="senates">
+  <% @senates.each do |senate| %>
+    <%= render senate %>
+    <p>
+      <%= link_to "Show this senate", senate %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New senate", new_senate_path %>

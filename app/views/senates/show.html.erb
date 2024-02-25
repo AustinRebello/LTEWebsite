@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @senate %>
+
+<div>
+  <%= link_to "Edit this senate", edit_senate_path(@senate) %> |
+  <%= link_to "Back to senates", senates_path %>
+
+  <%= button_to "Destroy this senate", @senate, method: :delete %>
+</div>

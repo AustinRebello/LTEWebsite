@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Presidents</h1>
+
+<div id="presidents">
+  <% @presidents.each do |president| %>
+    <%= render president %>
+    <p>
+      <%= link_to "Show this president", president %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New president", new_president_path %>

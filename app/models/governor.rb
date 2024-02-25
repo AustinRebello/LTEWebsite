@@ -1,0 +1,2 @@
+class Governor < ApplicationRecord
+end
