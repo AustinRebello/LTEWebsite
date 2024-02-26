@@ -39,8 +39,11 @@
     </script>
 
     <% if user_signed_in? %> 
-        <div class="pull-right"> Welcome <%= current_user.email %> </div> 
-        <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+        <div class="pull-right text-white"> Welcome <%= current_user.email %></div> 
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% if current_user.admin? %>
+            <%= button_to "Administration Dashboard", admin_index_path, method: :get %>
+        <% end %>
     <% else %>
         <%= button_to "Sign in", new_user_session_path, class:"pull-right" %> 
     <% end %>
