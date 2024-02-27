@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ .center {
+    text-align: center;
+ }
 
  div .card {
     background-color:#111111;
@@ -24,6 +27,180 @@
    color:white;
  }
 
- #adminTable tr {
+  .adminTables {
    color:white
  }
+
+
+
+ #us-map{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.disabled {
+  fill: none !important;
+  cursor: default;
+  stroke: #A9A9A9 !important;
+  pointer-events: none;
+
+}
+
+path:hover, circle:hover {
+  stroke: #002868 !important;
+  stroke-width:2px;
+  stroke-linejoin: round;
+  fill: #002868 !important;
+  cursor: pointer;
+}
+#path67 {
+  fill: none !important;
+  stroke: #A9A9A9 !important;
+  cursor: default;
+}
+
+#info-box {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 2px solid #BF0A30;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: arial;
+}
+
+#presidentSVG {
+  width:65%;
+  height:auto;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Admin Page CSS */
+
+.evt-tab-inner {
+margin-bottom: 80px;
+}
+.evt-tab-inner ul {
+margin: 0;
+padding: 0;
+border: 0 !important;
+}
+.evt-tab-inner ul li {
+text-align: center;
+display: contents;
+}
+.evt-tab-inner ul li a {
+border: 1px solid var(--main-color) !important;
+height: 100px;
+line-height: 100px;
+padding: 0;
+width: 33.33%;
+border-radius: 0 !important;
+font-size: 24px;
+position: relative;
+}
+.evt-tab-inner ul li a span {
+  font-weight: 700;
+  margin-right: 25px;
+  color: #fff;
+}
+.evt-tab-inner ul li a:after {
+  content: "";
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  background: var(--main-color);
+  transform: rotate(45deg);
+  left: 50%;
+  margin-left: -15px;
+  bottom: -16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease-in;
+}
+.evt-tab-inner ul li a:hover, .evt-tab-inner ul li a:active, .evt-tab-inner ul li a:focus, .evt-tab-inner ul li a.active {
+  background: var(--main-color) !important;
+  color: #fff !important;
+}
+
+.evt-tab-inner ul li a:hover span, .evt-tab-inner ul li a:active span, .evt-tab-inner ul li a:focus span, .evt-tab-inner ul li a.active span {
+color: #fff;
+}
+.evt-tab-inner ul li a:hover:after, .evt-tab-inner ul li a:active:after, .evt-tab-inner ul li a:focus:after, .evt-tab-inner ul li a.active:after {
+  opacity: 1;
+  visibility: visible;
+}
+.evt-tab-inner.style-two ul li a {
+width: 50%;
+}
+
+
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #495057;
+  background-color: #660000 !important;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+.evt-tab-inner ul li a:hover, .evt-tab-inner ul li a:active, .evt-tab-inner ul li a:focus, .evt-tab-inner ul li a.active {
+  background: #000066 !important;
+  color: #fff !important;
+}
+
+.evt-tab-inner ul li a{
+  background: #222
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+.evt-tab-inner ul li a {
+  border: 1px solid var(--main-color) !important;
+  height: 100px;
+  line-height: 100px;
+  padding: 0;
+  width: 20%;
+  border-radius: 1 !important;
+  font-size: 24px;
+  position: relative;
+}
+.nav-link {
+  display: block;
+  padding: .5rem 1rem;
+}

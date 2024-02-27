@@ -44,6 +44,9 @@
         <% if current_user.admin? %>
             <%= button_to "Administration Dashboard", admin_index_path, method: :get %>
         <% end %>
+        <% if current_user.super_user? %>
+            <%= button_to "Super User Dashboard", admin_super_path, method: :get %>
+        <% end %>
     <% else %>
         <%= button_to "Sign in", new_user_session_path, class:"pull-right" %> 
     <% end %>

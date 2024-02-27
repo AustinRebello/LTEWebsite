@@ -1,28 +1,163 @@
 
+<div class="schedules-area pd-top-110 pt-5">
+    <div class="container">
+        <div class="evt-tab-inner text-center">
+            <ul class="nav nav-tabs" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="ex1-tab-1" data-toggle="pill" role="tab" aria-selected="true" href='#s1'><span>President</span></a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ex1-tab-2" data-toggle="pill" role="tab" aria-selected="false" href='#s2'><span>Governor</span></a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ex1-tab-3" data-toggle="pill" role="tab" aria-selected="false" href='#s3'><span>Senate</span></a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ex1-tab-4" data-toggle="pill" role="tab" aria-selected="false" href='#s4'><span>House</span></a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ex1-tab-5" data-toggle="pill" role="tab" aria-selected="false" href='#s5'><span>Miscellaneous</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<div class="container pt-5">
-    <table class="table" id = "adminTable">
-    <thead>
-        <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Email</th>
-        <th scope="col">Is Admin</th>
-        <th scope="col">Is Super</th>
-        <th scope="col">Super Options</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @users.each do |u| %>
-            <tr>
-            <th scope="row"><%= u.id %></th>
-                <td><%= u.email %></td>
-                <td><%= u.admin %></td>
-                <td><%= u.super_user %></td>
-                <% if current_user.super_user? %>
-                    <td>MANAGEMENT SOON</td>
+ <!-- Tab panes -->
+    <div class="tab-content">
+     <div class='tab-pane container fade in show active' id='s1'>
+        <div class="container">
+            <h1 class="center text-white">Presidential Race Management</h1>
+            <table class="table adminTables" id = "presidentTable">
+            <thead>
+                <tr>
+                <th scope="col">Date</th>
+                <th scope="col">State</th>
+                <th scope="col">Management</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @presidents.each do |p| %>
+                    <tr>
+                        <td><%= u.date %></td>
+                        <td><%= u.state %></td>
+                        <% if current_user.admin? %>
+                            <td>MANAGEMENT SOON</td>
+                        <% end %>
+                    </tr>
                 <% end %>
-            </tr>
-        <% end %>
-    </tbody>
-    </table>
+            </tbody>
+            </table>
+        </div>
+    </div>
+    <div class='tab-pane container fade' id='s2'>
+        <div class="container">
+            <h1 class="center text-white">Gubernatorial Race Management</h1>
+            <table class="table adminTables" id = "governorTable">
+            <thead>
+                <tr>
+                <th scope="col">Date</th>
+                <th scope="col">State</th>
+                <th scope="col">Management</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @governors.each do |u| %>
+                    <tr>
+                    <th scope="row"><%= u.id %></th>
+                        <td><%= u.date %></td>
+                        <td><%= u.state %></td>
+                        <% if current_user.admin? %>
+                            <td>MANAGEMENT SOON</td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+            </table>
+        </div>        
+    </div>
+    <div class='tab-pane container fade' id='s3'>
+        <div class="container">
+            <h1 class="center text-white">Senate Race Management</h1>
+            <table class="table adminTables" id = "senateTable">
+            <thead>
+                <tr>
+                <th scope="col">Date</th>
+                <th scope="col">State</th>
+                <th scope="col">Management</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @senates.each do |u| %>
+                    <tr>
+                    <th scope="row"><%= u.id %></th>
+                        <td><%= u.date %></td>
+                        <td><%= u.state %></td>
+                        <% if current_user.admin? %>
+                            <td>MANAGEMENT SOON</td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+            </table>
+        </div>
+    </div>
+    <div class='tab-pane container fade' id='s4'>
+        <div class="container">
+            <h1 class="center text-white">House Race Management</h1>
+            <table class="table adminTables" id = "houseTable">
+            <thead>
+                <tr>
+                <th scope="col">Date</th>
+                <th scope="col">State</th>
+                <th scope="col">Seat</th>
+                <th scope="col">Management</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @houses.each do |u| %>
+                    <tr>
+                    <th scope="row"><%= u.id %></th>
+                        <td><%= u.date %></td>
+                        <td><%= u.state %></td>
+                        <td><%= u.seat %></td>
+                        <% if current_user.admin? %>
+                            <td>MANAGEMENT SOON</td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+            </table>
+        </div>
+    </div>
+    <div class='tab-pane container fade' id='s5'>
+        <div class="container">
+            <h1 class="center text-white">Miscellaneous Race Management</h1>
+            <table class="table adminTables" id = "miscTable">
+            <thead>
+                <tr>
+                <th scope="col">Date</th>
+                <th scope="col">State</th>
+                <th scope="col">Seat</th>
+                <th scope="col">Race Type</th>
+                <th scope="col">Management</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @houses.each do |u| %>
+                    <tr>
+                    <th scope="row"><%= u.id %></th>
+                        <td><%= u.date %></td>
+                        <td><%= u.state %></td>
+                        <td><%= u.seat %></td>
+                        <td><%= u.race_type %></td>
+                        <% if current_user.admin? %>
+                            <td>MANAGEMENT SOON</td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+            </table>
+        </div>
+    </div>
 </div>

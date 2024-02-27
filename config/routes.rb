@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'races/index'
+  get 'races/predictions'
   get 'admin/index'
+  get 'admin/super'
   devise_for :users
   resources :news
   resources :miscs
