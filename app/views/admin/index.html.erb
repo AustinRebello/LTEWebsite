@@ -39,8 +39,8 @@
             <tbody>
                 <% @presidents.each do |p| %>
                     <tr>
-                        <td><%= u.date %></td>
-                        <td><%= u.state %></td>
+                        <td><%= p.date %></td>
+                        <td><%= p.state %></td>
                         <% if current_user.admin? %>
                             <td>MANAGEMENT SOON</td>
                         <% end %>

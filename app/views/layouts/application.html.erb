@@ -22,8 +22,9 @@
     <%= render "layouts/header" %>
     <!--<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>-->
+    <div  style="min-height: 75vh;display: flex;flex-direction: column;">
+      <%= yield %>
+    </div>
     <%= render "layouts/footer" %>
-
-    <%= yield %>
-    </body>
+  </body>
 </html>
