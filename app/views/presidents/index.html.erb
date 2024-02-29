@@ -92,14 +92,3 @@ if(ios) {
   });
 }
 </script>
-
-<div id="presidents">
-  <% @presidents.each do |president| %>
-    <% render president %>
-    <p>
-      <% link_to "Show this president", president %>
-    </p>
-  <% end %>
-</div>
-
-<% link_to "New president", new_president_path %>
