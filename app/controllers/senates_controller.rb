@@ -4,6 +4,7 @@ class SenatesController < ApplicationController
   # GET /senates or /senates.json
   def index
     @senates = Senate.all
+    @list = generate_nested_lists()
   end
 
   # GET /senates/1 or /senates/1.json

@@ -4,6 +4,7 @@ class PresidentsController < ApplicationController
   # GET /presidents or /presidents.json
   def index
     @presidents = President.all
+    @list = generate_nested_lists()
   end
 
   # GET /presidents/1 or /presidents/1.json
@@ -67,4 +68,7 @@ class PresidentsController < ApplicationController
     def president_params
       params.require(:president).permit(:date, :state)
     end
+
+    
+
 end

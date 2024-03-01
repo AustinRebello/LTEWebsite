@@ -76,7 +76,7 @@ path:hover, circle:hover {
   font-family: arial;
 }
 
-#presidentSVG {
+#presidentSVG, #senateSVG, #governorSVG {
   width:65%;
   height:auto;
   display:block;

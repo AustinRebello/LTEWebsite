@@ -4,6 +4,7 @@ class GovernorsController < ApplicationController
   # GET /governors or /governors.json
   def index
     @governors = Governor.all
+    @list = generate_nested_lists()
   end
 
   # GET /governors/1 or /governors/1.json

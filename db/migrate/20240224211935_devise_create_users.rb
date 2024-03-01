@@ -11,6 +11,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
+      t.boolean :admin
+      t.boolean :super_user
+      
+      
+
       ## Rememberable
       t.datetime :remember_created_at
 
