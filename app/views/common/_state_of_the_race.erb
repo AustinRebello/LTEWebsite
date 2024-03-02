@@ -1,0 +1,102 @@
+<div class="card borderless text-center">
+    <h2>State of the Race</h2>
+    <p>Forecast last updated on 3/1/2024 at 5:00PM</p>
+
+    <div class="sotr">
+
+        <div class="sotr-candidate">
+            <div class="sotr-background">
+            </div>
+
+            <h2 class="mt-2 sotr-candName">Biden</h2>
+            <h1 class="sotr-candVotes">270</h1>
+        </div>
+
+        <div class="sotr-states">
+            <div class="sotr-bar"></div>
+        </div>
+
+        <div class="sotr-candidate">
+            <div class="sotr-background">
+            </div>
+
+            <h2 class="mt-2 sotr-candName">Trump</h2>
+            <h1 class="sotr-candVotes">270</h1>
+        </div>
+
+        
+    </div>
+    <p class="text-center mt-2" >Click to view full presidential forecast</p>
+</div>
+
+<script>
+
+    // Initialize candidates with lean colors
+    var biden = new SotrCandidate("Biden", ["#B2B8D1", "#9FB5FF", "#5F85FF", "#0047FF"], 0, "/img/temp/biden.png");
+    var tossup = new SotrCandidate("Tossup", ["#FFDF00", "#FFDF00", "#FFDF00", "#FFDF00"], 1, "");
+    var trump = new SotrCandidate("Trump", ["#CFAAA2", "#FFA9B6", "#FF7392", "#FF0052"], 2, "/img/temp/trump.png");
+
+    var CANDIDATES = [biden, tossup, trump];
+    var STATES = [
+        new SotrState("AL", 9, trump, RaceLean.SAFE),
+        new SotrState("AK", 3, trump, RaceLean.LIKELY),
+        new SotrState("AZ", 11, biden, RaceLean.TILT),
+        new SotrState("AR", 6, trump, RaceLean.SAFE),
+        new SotrState("CA", 54, biden, RaceLean.SAFE),
+        new SotrState("CO", 10, biden, RaceLean.LIKELY),
+        new SotrState("CT", 7, biden, RaceLean.SAFE),
+        new SotrState("DC", 3, biden, RaceLean.SAFE),
+        new SotrState("DE", 3, biden, RaceLean.SAFE),
+        new SotrState("FL", 30, trump, RaceLean.LIKELY),
+        new SotrState("GA", 16, trump, RaceLean.TILT),
+        new SotrState("HI", 4, biden, RaceLean.SAFE),
+        new SotrState("ID", 4, trump, RaceLean.SAFE),
+        new SotrState("IL", 19, biden, RaceLean.SAFE),
+        new SotrState("IN", 11, trump, RaceLean.SAFE),
+        new SotrState("IA", 6, trump, RaceLean.LIKELY),
+        new SotrState("KS", 6, trump, RaceLean.LIKELY),
+        new SotrState("KY", 8, trump, RaceLean.SAFE),
+        new SotrState("LA", 8, trump, RaceLean.SAFE),
+        new SotrState("ME-AL", 2, biden, RaceLean.LIKELY, true),
+        new SotrState("ME-1", 1, biden, RaceLean.SAFE, true),
+        new SotrState("ME-2", 1, trump, RaceLean.LIKELY, true),
+        new SotrState("MD", 10, biden, RaceLean.SAFE),
+        new SotrState("MA", 11, biden, RaceLean.SAFE),
+        new SotrState("MI", 15, biden, RaceLean.TILT),
+        new SotrState("MN", 10, biden, RaceLean.LEAN),
+        new SotrState("MS", 6, trump, RaceLean.SAFE),
+        new SotrState("MO", 10, trump, RaceLean.SAFE),
+        new SotrState("MT", 4, trump, RaceLean.LIKELY),
+        new SotrState("NE-AL", 2, trump, RaceLean.SAFE, true),
+        new SotrState("NE-1", 1, trump, RaceLean.LIKELY, true),
+        new SotrState("NE-2", 1, biden, RaceLean.LEAN, true),
+        new SotrState("NE-3", 1, trump, RaceLean.SAFE, true),
+        new SotrState("NV", 6, trump, RaceLean.TILT),
+        new SotrState("NH", 4, biden, RaceLean.LIKELY),
+        new SotrState("NJ", 14, biden, RaceLean.SAFE),
+        new SotrState("NM", 5, biden, RaceLean.LIKELY),
+        new SotrState("NY", 28, biden, RaceLean.SAFE),
+        new SotrState("NC", 16, trump, RaceLean.TILT),
+        new SotrState("ND", 3, trump, RaceLean.SAFE),
+        new SotrState("OH", 17, trump, RaceLean.LEAN),
+        new SotrState("OK", 7, trump, RaceLean.SAFE),
+        new SotrState("OR", 8, biden, RaceLean.LIKELY),
+        new SotrState("PA", 19, biden, RaceLean.TILT),
+        new SotrState("RI", 4, biden, RaceLean.SAFE),
+        new SotrState("SC", 9, trump, RaceLean.LIKELY),
+        new SotrState("SD", 3, trump, RaceLean.SAFE),
+        new SotrState("TN", 11, trump, RaceLean.SAFE),
+        new SotrState("TX", 40, biden, RaceLean.LIKELY),
+        new SotrState("UT", 6, trump, RaceLean.SAFE),
+        new SotrState("VT", 3, biden, RaceLean.SAFE),
+        new SotrState("VA", 13, biden, RaceLean.LIKELY),
+        new SotrState("WA", 12, biden, RaceLean.SAFE),
+        new SotrState("WV", 4, trump, RaceLean.SAFE),
+        new SotrState("WI", 10, biden, RaceLean.TILT),
+        new SotrState("WY", 3, trump, RaceLean.SAFE),
+    ];
+
+    populateSotr($(".sotr"), CANDIDATES, STATES);
+
+</script>
+

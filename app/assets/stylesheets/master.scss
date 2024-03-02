@@ -4,8 +4,9 @@ $body-font: "open-sans", sans-serif;
 $color-dark-gray: #111111;
 $color-gray: #202020;
 $color-white: #ffffff;
-$color-magenta: #B6262D;
+$color-red: #B6262D;
 $color-blue: #3030FF;
+$color-yellow: #FFDF00;
 
 $text-color: $color-white;
 
@@ -272,12 +273,117 @@ nav {
     }
 
     :nth-child(1){
-        background-color: $color-magenta;
+        background-color: $color-red;
     }
     :nth-child(2){
         background-color: $color-white;
     }
     :nth-child(3){
         background-color: $color-blue;
+    }
+}
+
+.sotr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    > * {
+        float: left;
+    }
+    margin-top: 1rem;
+}
+
+.sotr-states {
+    display: grid;
+    grid-template-columns: repeat(13, 2rem);
+    grid-template-rows: repeat(4, 2rem);
+    grid-gap: 0.5em;
+    grid-auto-flow: column;
+    padding: 0 0.5rem;
+    
+}
+
+.sotr-state {
+    @extend .subheader;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    position: relative;
+
+    
+
+    &.sotr-small {
+        font-size: $text-size-small;
+    }
+
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+    }
+
+    &.sotr-tipping {
+        border: 3px solid $color-yellow;
+        box-shadow: 0 0 15px 5px $color-yellow;
+    }
+}
+
+.sotr .sotr-candidate {
+    width: 200px;
+    height: 12rem;
+    background: $color-gray;
+    .sotr-background {
+        height: 7rem;
+
+        img {
+            width: 75%;
+            position: relative;
+            display: block;
+            top: calc(7rem - 150px);
+            margin: auto;
+        }
+    }
+
+    &:nth-of-type(1) {
+
+        border-radius: 1em 0 0 1em;
+
+        .sotr-background {
+            background: linear-gradient(45deg, $color-gray, $color-blue 50%);
+            border-top-left-radius: 1em;
+        }
+    }
+
+    &:nth-of-type(3) {
+
+        border-radius: 0 1em 1em 0;
+
+        .sotr-background {
+            background: linear-gradient(-45deg, $color-gray, $color-red 50%);
+            border-top-right-radius: 1em;
+        }
+
+    }
+}
+
+.sotr-bar {
+    grid-row: 5;
+    grid-column-start: 1;
+    grid-column-end: 15;
+    position: relative;
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 3em;
+        width: 3px;
+        background-color: white;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }
