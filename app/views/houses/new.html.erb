@@ -1,9 +1,16 @@
-<h1>New house</h1>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <h1>New house</h1>
 
-<%= render "form", house: @house %>
+    <%= render "form", house: @house %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Back to houses", houses_path %>
-</div>
+    <div>
+      <%= link_to "Back to houses", houses_path %>
+    </div>
+  <% else %>
+    <div class="text-center text-white">
+      <h1>Oops! You are not authorized to view this page! Sorry, please return to the page you were previously on!</h1>
+  <% end %>
+<% end %>

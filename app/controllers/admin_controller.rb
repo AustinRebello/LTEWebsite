@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   before_action :authenticate_user!
+  before_action :admin?
   
   def index
 
@@ -14,6 +15,7 @@ class AdminController < ApplicationController
   def super
     @users = User.all
   end
+
 
 
 end

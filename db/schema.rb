@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_26_035745) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_01_221305) do
   create_table "governors", force: :cascade do |t|
     t.string "date"
     t.string "state"
@@ -66,8 +66,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_26_035745) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
-    t.boolean "super_user", default: false
+    t.boolean "admin", default: false, null: false
+    t.boolean "super_user", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

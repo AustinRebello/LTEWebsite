@@ -1,4 +1,11 @@
 class ApplicationController < ActionController::Base
+
+    def admin?
+        redirect_to root_path, alert: "Permissions denied" unless
+         current_user.admin?
+    end
+
+
     def generate_nested_lists
         final_list = []
         states = ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA", "ME", "NH", "VT", "NY", "NJ" ,"PA", "DE", "MD", "WV", "KY", "OH" ,"MI", "WY", "MT",

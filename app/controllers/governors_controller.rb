@@ -1,5 +1,6 @@
 class GovernorsController < ApplicationController
   before_action :set_governor, only: %i[ show edit update destroy ]
+  before_action :admin?, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /governors or /governors.json
   def index

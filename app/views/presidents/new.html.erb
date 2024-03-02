@@ -1,9 +1,16 @@
-<h1>New president</h1>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <h1>New president</h1>
 
-<%= render "form", president: @president %>
+    <%= render "form", president: @president %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Back to presidents", presidents_path %>
-</div>
+    <div>
+      <%= link_to "Back to presidents", presidents_path %>
+    </div>
+  <% else %>
+    <div class="text-center text-white">
+      <h1>Oops! You are not authorized to view this page! Sorry, please return to the page you were previously on!</h1>
+  <% end %>
+<% end %>

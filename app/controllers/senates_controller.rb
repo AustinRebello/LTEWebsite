@@ -1,5 +1,6 @@
 class SenatesController < ApplicationController
   before_action :set_senate, only: %i[ show edit update destroy ]
+  before_action :admin?, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /senates or /senates.json
   def index

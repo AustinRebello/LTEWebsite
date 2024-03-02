@@ -1,9 +1,16 @@
-<h1>New senate</h1>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <h1>New senate</h1>
 
-<%= render "form", senate: @senate %>
+    <%= render "form", senate: @senate %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Back to senates", senates_path %>
-</div>
+    <div>
+      <%= link_to "Back to senates", senates_path %>
+    </div>
+  <% else %>
+    <div class="text-center text-white">
+      <h1>Oops! You are not authorized to view this page! Sorry, please return to the page you were previously on!</h1>
+  <% end %>
+<% end %>

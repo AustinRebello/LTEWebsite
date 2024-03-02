@@ -1,5 +1,6 @@
 class PresidentsController < ApplicationController
   before_action :set_president, only: %i[ show edit update destroy ]
+  before_action :admin?, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /presidents or /presidents.json
   def index

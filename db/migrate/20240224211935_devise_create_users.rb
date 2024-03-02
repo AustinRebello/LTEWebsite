@@ -11,8 +11,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
-      t.boolean :admin
-      t.boolean :super_user
+      t.boolean :admin              null: false, default: false
+      t.boolean :super_user,        null: false, default: false
       
       
 
