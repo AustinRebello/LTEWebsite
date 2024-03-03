@@ -59,6 +59,29 @@ class PresidentsController < ApplicationController
     end
   end
 
+  def add_all_races
+    puts("DATA")
+    year = params[:president][:date]
+    puts(year)
+    puts("END DATA")
+    delete_all_races(params[:president][:date])
+
+    races = return_states()
+
+    for state in races do
+      @president = President.new(date: year, state: state)
+      if @president.save
+        #Yay, do nothing
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @president.errors, status: :unprocessable_entity }
+      end
+    end
+    redirect_to action: "index"
+  end
+
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_president
@@ -68,6 +91,12 @@ class PresidentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def president_params
       params.require(:president).permit(:date, :state)
+    end
+
+    
+
+    def delete_all_races(year)
+      President.where(date: year).destroy_all
     end
 
     

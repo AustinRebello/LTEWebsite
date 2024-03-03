@@ -1,10 +1,22 @@
 class ApplicationController < ActionController::Base
 
     def admin?
-        redirect_to root_path, alert: "Permissions denied" unless
-         current_user.admin?
+        if current_user.nil?
+            redirect_to root_path, alert: "Permissions denied"
+        
+        else 
+            redirect_to root_path, alert: "Permissions denied" unless
+                 current_user.admin?
+        end
+
+        puts(current_user.nil?)
+        
     end
 
+    def return_states
+        return ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA", "ME", "NH", "VT", "NY", "NJ" ,"PA", "DE", "MD", "WV", "KY", "OH" ,"MI", "WY", "MT",
+            "ID", "WA", "TX", "CA", "AZ", "NV", "UT", "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", "WI", "MO", "AR", "OK", "KS", "LA", "VA", "DC"]
+    end
 
     def generate_nested_lists
         final_list = []

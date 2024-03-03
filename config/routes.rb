@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :news
   resources :miscs
-  resources :presidents
+  resources :presidents do 
+    collection do
+      post :add_all_races
+    end
+  end
   resources :governors
   resources :senates
   resources :houses

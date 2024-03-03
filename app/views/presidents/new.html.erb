@@ -1,6 +1,7 @@
-<% if user_signed_in? %>
-  <% if current_user.admin? %>
-    <h1>New president</h1>
+<% if user_signed_in? && current_user.admin?%>
+    <!-- FORM ONE: SINGULAR STATE -->
+
+    <h1 class = "text-center text-white">Individual Presidential Race</h1>
 
     <%= render "form", president: @president %>
 
@@ -9,8 +10,19 @@
     <div>
       <%= link_to "Back to presidents", presidents_path %>
     </div>
-  <% else %>
-    <div class="text-center text-white">
-      <h1>Oops! You are not authorized to view this page! Sorry, please return to the page you were previously on!</h1>
-  <% end %>
+
+    <!-- FORM TWO: ALL STATES -->
+    <h1 class = "text-center text-white">All 51 Presidential Races</h1>
+    <h2 class = "text-center text-white">WARNING: THIS WILL DELETE ALL CURRENT STATES (Not that it really matters)</h2>
+    <%= form_for @president, :url => {:action => "add_all_races" } do |form| %>
+      <%= form.label :date, "Year" %>
+      <%= form.text_field :date, :required => true%>
+      <%= form.submit "Generate All Races" %>
+    <% end %>
+
+
+<% else %>
+  <div class="text-center text-white">
+    <h1>Oops! You are not authorized to view this page! Sorry, please return to the page you were previously on!</h1>
+  </div>
 <% end %>

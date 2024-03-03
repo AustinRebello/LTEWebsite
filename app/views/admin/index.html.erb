@@ -41,9 +41,7 @@
                     <tr>
                         <td><%= p.date %></td>
                         <td><%= p.state %></td>
-                        <% if current_user.admin? %>
-                            <td>MANAGEMENT SOON</td>
-                        <% end %>
+                        <td><%= link_to "Manage Race", edit_president_path(p) %></td>
                     </tr>
                 <% end %>
             </tbody>
@@ -67,9 +65,7 @@
                     <th scope="row"><%= u.id %></th>
                         <td><%= u.date %></td>
                         <td><%= u.state %></td>
-                        <% if current_user.admin? %>
-                            <td>MANAGEMENT SOON</td>
-                        <% end %>
+                        <td><%= link_to "Manage Race", edit_governor_path(u) %></td>
                     </tr>
                 <% end %>
             </tbody>
@@ -93,9 +89,7 @@
                     <th scope="row"><%= u.id %></th>
                         <td><%= u.date %></td>
                         <td><%= u.state %></td>
-                        <% if current_user.admin? %>
-                            <td>MANAGEMENT SOON</td>
-                        <% end %>
+                        <td><%= link_to "Manage Race", edit_senate_path(u) %></td>
                     </tr>
                 <% end %>
             </tbody>
@@ -121,9 +115,7 @@
                         <td><%= u.date %></td>
                         <td><%= u.state %></td>
                         <td><%= u.seat %></td>
-                        <% if current_user.admin? %>
-                            <td>MANAGEMENT SOON</td>
-                        <% end %>
+                        <td><%= link_to "Manage Race", edit_house_path(u) %></td>
                     </tr>
                 <% end %>
             </tbody>
@@ -151,9 +143,7 @@
                         <td><%= u.state %></td>
                         <td><%= u.seat %></td>
                         <td><%= u.race_type %></td>
-                        <% if current_user.admin? %>
-                            <td>MANAGEMENT SOON</td>
-                        <% end %>
+                        <td><%= link_to "Manage Race", edit_misc_path(u) %></td>
                     </tr>
                 <% end %>
             </tbody>
