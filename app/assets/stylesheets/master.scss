@@ -300,6 +300,10 @@ nav {
     grid-gap: 0.5em;
     grid-auto-flow: column;
     padding: 0 0.5rem;
+
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
     
 }
 
@@ -385,5 +389,46 @@ nav {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+    }
+}
+
+h1#forecastLogo img {
+    height: 1.25em;
+    margin-top: -0.6em;
+}
+
+.btn-primary {
+    @extend .subheader;
+    font-weight: 800;
+
+    border: none;
+    background-color: $color-blue;
+    position: relative;
+    border-radius: 10px;
+    z-index: 1;
+    padding: 0.5em 1em;
+
+    span::before {
+        content: "";
+        left: 50%;
+        top: 0;
+        position: absolute;
+        display: block;
+        background-color: $color-white;
+        width: 0px;
+        height: 100%;
+        transition: 150ms ease-out;
+        border-radius: 10px;
+        z-index: -1;
+    }
+
+    &:hover, &:focus {
+        color: $color-dark-gray !important;
+        
+
+        span::before {
+            width: 100%;
+            left: 0;
+        }
     }
 }

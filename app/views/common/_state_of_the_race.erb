@@ -1,6 +1,7 @@
 <div class="card borderless text-center">
-    <h2>State of the Race</h2>
-    <p>Forecast last updated on 3/1/2024 at 5:00PM</p>
+    <h1 id="forecastLogo"><%= image_tag("LTE_Wordmark.png", :alt=> "LTE Logo") %> Presidential Forecast</h1>
+    <a href="<%= presidents_path %>" class="btn btn-primary"><span></span>View Full Forecast</a>
+    
 
     <div class="sotr">
 
@@ -26,7 +27,8 @@
 
         
     </div>
-    <p class="text-center mt-2" >Click to view full presidential forecast</p>
+    <p class="mt-2">Last updated on 3/1/2024 at 5:00PM</p>
+    
 </div>
 
 <script>
@@ -86,7 +88,7 @@
         new SotrState("SC", 9, trump, RaceLean.LIKELY),
         new SotrState("SD", 3, trump, RaceLean.SAFE),
         new SotrState("TN", 11, trump, RaceLean.SAFE),
-        new SotrState("TX", 40, biden, RaceLean.LIKELY),
+        new SotrState("TX", 40, trump, RaceLean.LIKELY),
         new SotrState("UT", 6, trump, RaceLean.SAFE),
         new SotrState("VT", 3, biden, RaceLean.SAFE),
         new SotrState("VA", 13, biden, RaceLean.LIKELY),

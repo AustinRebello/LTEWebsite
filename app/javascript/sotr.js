@@ -63,11 +63,37 @@ function populateSotr(sotr, candidates, states){
         return 0;
     });
 
+    var row = 0;
+    var col = 1;
+
     for(var state of states){
         var candidate = state.candidate;
 
+        // Snake the entries like this
+        // |  ----  --->...
+        // v  ^  v  ^
+        // |__|  |__|
+        
+        if(col % 2 == 0){
+            row--;
+        } else row++;
+
+        if(row > 4 || row < 1){
+            col++;
+
+            if(row > 4) row = 4;
+            if(row < 1) row = 1;
+        }
+        
+        
+
         var object = $(`
-        <div class='sotr-state' data-sotrState='${state.postalCode}' style='background-color: ${candidate.getLean(state.lean)}'>
+        <div class='sotr-state' data-sotrState='${state.postalCode}'style='
+            background-color: ${candidate.getLean(state.lean)};
+            grid-column: ${col};
+            grid-row: ${row}
+            
+            '>
 
             <span>${state.postalCode}</span>
 
@@ -77,6 +103,8 @@ function populateSotr(sotr, candidates, states){
         if(state.smallText){
             object.addClass("sotr-small");
         }
+
+        
 
         object.appendTo($(sotr).find(".sotr-states"));
 
