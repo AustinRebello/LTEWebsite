@@ -1,12 +1,15 @@
-<div class="card borderless text-center">
+<a href="<%= presidents_path %>">
+<div class="card borderless text-center card-hover">
     <h1 id="forecastLogo"><%= image_tag("LTE_Wordmark.png", :alt=> "LTE Logo") %> Presidential Forecast</h1>
-    <a href="<%= presidents_path %>" class="btn btn-primary"><span></span>View Full Forecast</a>
+    <!--<a href="<%= presidents_path %>" class="btn btn-primary"><span></span>View Full Forecast</a>>-->
+    <p class="mt-2">Last updated on 3/1/2024 at 5:00PM</p>
     
 
     <div class="sotr">
 
         <div class="sotr-candidate">
             <div class="sotr-background">
+                <img/>
             </div>
 
             <h2 class="mt-2 sotr-candName">Biden</h2>
@@ -19,6 +22,7 @@
 
         <div class="sotr-candidate">
             <div class="sotr-background">
+                <img/>
             </div>
 
             <h2 class="mt-2 sotr-candName">Trump</h2>
@@ -27,16 +31,17 @@
 
         
     </div>
-    <p class="mt-2">Last updated on 3/1/2024 at 5:00PM</p>
+    
+    <p class="mt-2">Click to view full forecast</p>
     
 </div>
-
+</a>
 <script>
 
     // Initialize candidates with lean colors
     var biden = new SotrCandidate("Biden", ["#B2B8D1", "#9FB5FF", "#5F85FF", "#0047FF"], 0, "/img/temp/biden.png");
     var tossup = new SotrCandidate("Tossup", ["#FFDF00", "#FFDF00", "#FFDF00", "#FFDF00"], 1, "");
-    var trump = new SotrCandidate("Trump", ["#CFAAA2", "#FFA9B6", "#FF7392", "#FF0052"], 2, "/img/temp/trump.png");
+    var trump = new SotrCandidate("Trump", ["#CFAAA2", "#FFA9B6", "#FF7392", "#CF0042"], 2, "/img/temp/trump.png");
 
     var CANDIDATES = [biden, tossup, trump];
     var STATES = [
@@ -98,7 +103,11 @@
         new SotrState("WY", 3, trump, RaceLean.SAFE),
     ];
 
-    populateSotr($(".sotr"), CANDIDATES, STATES);
+    $(document).ready(function(){
+        populateSotr($(".sotr"), CANDIDATES, STATES);
+    })
+
+    
 
 </script>
 

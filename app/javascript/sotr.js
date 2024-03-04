@@ -111,13 +111,8 @@ function populateSotr(sotr, candidates, states){
         candidate.votes += state.electoralVotes;
     }
 
-    $(sotr).find(".sotr-candidate:nth-of-type(1) .sotr-background").append(
-        `<img src='${CANDIDATES[0].imageUrl}'/>`
-    );
-
-    $(sotr).find(".sotr-candidate:nth-of-type(3) .sotr-background").append(
-        `<img src='${CANDIDATES[2].imageUrl}'/>`
-    );
+    $(sotr).find(".sotr-candidate:nth-of-type(1) .sotr-background img").attr('src', CANDIDATES[0].imageUrl);
+    $(sotr).find(".sotr-candidate:nth-of-type(3) .sotr-background img").attr('src', CANDIDATES[2].imageUrl);
 
     // Set candidate texts
     [candidates[0], candidates[2]].forEach((candidate) => {
