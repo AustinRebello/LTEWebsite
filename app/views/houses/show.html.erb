@@ -8,3 +8,20 @@
 
   <%= button_to "Destroy this house", @house, method: :delete %>
 </div>
+
+
+<script>
+  async function getData(){
+    var url = "https://api.ltelections.com/races/house%20"+'<%= @house.state %>'+"-"+'<%= @house.seat%>';
+    const response = await fetch(url);
+    const data = await response.json();
+
+    parseData(data);
+  };
+
+  function parseData(data){
+    console.log(data);
+  };
+  
+  getData();
+</script>

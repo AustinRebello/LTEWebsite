@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'races/predictions'
   get 'admin/index'
   get 'admin/super'
+  post 'admin/toggle_admin'
   devise_for :users
   resources :news
   resources :miscs

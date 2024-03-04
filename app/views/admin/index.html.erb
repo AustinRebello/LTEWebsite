@@ -1,4 +1,3 @@
-
 <div class="schedules-area pd-top-110 pt-5">
     <div class="container">
         <div class="evt-tab-inner text-center">
@@ -28,6 +27,7 @@
      <div class='tab-pane container fade in show active' id='s1'>
         <div class="container">
             <h1 class="center text-white">Presidential Race Management</h1>
+            <%= link_to "Add Presidential Elections", new_president_path %>
             <table class="table adminTables" id = "presidentTable">
             <thead>
                 <tr>
@@ -51,6 +51,7 @@
     <div class='tab-pane container fade' id='s2'>
         <div class="container">
             <h1 class="center text-white">Gubernatorial Race Management</h1>
+            <%= link_to "Add Gubernatorial Elections", new_governor_path %>
             <table class="table adminTables" id = "governorTable">
             <thead>
                 <tr>
@@ -62,7 +63,6 @@
             <tbody>
                 <% @governors.each do |u| %>
                     <tr>
-                    <th scope="row"><%= u.id %></th>
                         <td><%= u.date %></td>
                         <td><%= u.state %></td>
                         <td><%= link_to "Manage Race", edit_governor_path(u) %></td>
@@ -75,6 +75,7 @@
     <div class='tab-pane container fade' id='s3'>
         <div class="container">
             <h1 class="center text-white">Senate Race Management</h1>
+            <%= link_to "Add Senatorial Elections", new_senate_path %>
             <table class="table adminTables" id = "senateTable">
             <thead>
                 <tr>
@@ -86,7 +87,6 @@
             <tbody>
                 <% @senates.each do |u| %>
                     <tr>
-                    <th scope="row"><%= u.id %></th>
                         <td><%= u.date %></td>
                         <td><%= u.state %></td>
                         <td><%= link_to "Manage Race", edit_senate_path(u) %></td>
@@ -99,6 +99,7 @@
     <div class='tab-pane container fade' id='s4'>
         <div class="container">
             <h1 class="center text-white">House Race Management</h1>
+            <%= link_to "Add House Elections", new_house_url %>
             <table class="table adminTables" id = "houseTable">
             <thead>
                 <tr>
@@ -111,7 +112,6 @@
             <tbody>
                 <% @houses.each do |u| %>
                     <tr>
-                    <th scope="row"><%= u.id %></th>
                         <td><%= u.date %></td>
                         <td><%= u.state %></td>
                         <td><%= u.seat %></td>
@@ -125,6 +125,7 @@
     <div class='tab-pane container fade' id='s5'>
         <div class="container">
             <h1 class="center text-white">Miscellaneous Race Management</h1>
+            <%= link_to "Add Miscellaneous Elections", new_misc_path %>
             <table class="table adminTables" id = "miscTable">
             <thead>
                 <tr>
@@ -136,7 +137,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% @houses.each do |u| %>
+                <% @miscs.each do |u| %>
                     <tr>
                     <th scope="row"><%= u.id %></th>
                         <td><%= u.date %></td>

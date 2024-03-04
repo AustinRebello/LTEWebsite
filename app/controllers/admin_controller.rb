@@ -16,6 +16,15 @@ class AdminController < ApplicationController
     @users = User.all
   end
 
+  def toggle_admin
+    
+    User.update(params[:id], :admin=> params[:admin])
+
+    #BROKEN - TO FIX
+    redirect_to action: "super"
+    
+  end
+
 
 
 end

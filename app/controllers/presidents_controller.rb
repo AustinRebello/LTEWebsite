@@ -60,10 +60,7 @@ class PresidentsController < ApplicationController
   end
 
   def add_all_races
-    puts("DATA")
     year = params[:president][:date]
-    puts(year)
-    puts("END DATA")
     delete_all_races(params[:president][:date])
 
     races = return_states()
