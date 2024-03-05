@@ -1,5 +1,7 @@
 <% if user_signed_in? %>
   <% if current_user.admin? %>
+
+
     <h1>New senate</h1>
 
     <%= render "form", senate: @senate %>
@@ -9,6 +11,30 @@
     <div>
       <%= link_to "Back to senates", senates_path %>
     </div>
+
+
+
+    <!-- FORM TWO: ALL STATES -->
+    <h1 class = "text-center text-white">Bulk Add Senate Races</h1>
+    <h2 class = "text-center text-white">WARNING: THIS WILL DELETE ALL CURRENT STATES (Not that it really matters)</h2>
+    <%= form_for @senate, :url => {:action => "add_bulk_races" } do |form| %>
+      <%= form.label :date, "Year" %>
+      <%= form.text_field :date, :required => true%>
+      <!-- Logic goes here for check box states -->
+      <% for state in @states do %>
+          <%= form.check_box :state, { multiple: true }, state, type:"checkbox"%>
+          <%= form.label state, class:"text-white text-uppercase" %>
+        <% end %>
+      <%= form.submit "Generate Bulk Races" %>
+    <% end %>
+
+
+
+
+
+
+
+
   <% else %>
     <div class="text-center text-white">
       <h1>Oops! You are not authorized to view this page! Sorry, please return to the page you were previously on!</h1>

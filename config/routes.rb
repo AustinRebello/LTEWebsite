@@ -7,14 +7,31 @@ Rails.application.routes.draw do
   devise_for :users
   resources :news
   resources :miscs
+
   resources :presidents do 
     collection do
       post :add_all_races
     end
   end
-  resources :governors
-  resources :senates
-  resources :houses
+
+  resources :governors do
+    collection do
+      post :add_bulk_races
+    end
+  end
+
+  resources :senates do
+    collection do
+      post :add_bulk_races
+    end
+  end
+
+  resources :houses do
+    collection do
+      post :add_all_races
+    end
+  end
+  
   get 'home/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

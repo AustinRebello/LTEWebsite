@@ -1,5 +1,10 @@
 <% if user_signed_in? %>
   <% if current_user.admin? %>
+
+
+
+
+    <!-- Form One, singular US house -->
     <h1>New house</h1>
 
     <%= render "form", house: @house %>
@@ -9,6 +14,20 @@
     <div>
       <%= link_to "Back to houses", houses_path %>
     </div>
+
+    <!-- FORM TWO: ALL STATES -->
+    <h1 class = "text-center text-white">All 400+ House Races</h1>
+    <h2 class = "text-center text-white">WARNING: THIS WILL DELETE ALL CURRENT HOUSE RACES (Not that it really matters)</h2>
+    <%= form_for @house, :url => {:action => "add_all_races" } do |form| %>
+      <%= form.label :date, "Year" %>
+      <%= form.text_field :date, :required => true%>
+      <%= form.submit "Generate All Races" %>
+    <% end %>
+
+
+
+
+
   <% else %>
     <div class="text-center text-white">
       <h1>Oops! You are not authorized to view this page! Sorry, please return to the page you were previously on!</h1>

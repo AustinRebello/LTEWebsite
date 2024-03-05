@@ -15,6 +15,9 @@ class GovernorsController < ApplicationController
   # GET /governors/new
   def new
     @governor = Governor.new
+
+    @states = return_states()
+
   end
 
   # GET /governors/1/edit
@@ -25,15 +28,24 @@ class GovernorsController < ApplicationController
   def create
     @governor = Governor.new(governor_params)
 
-    respond_to do |format|
-      if @governor.save
-        format.html { redirect_to governor_url(@governor), notice: "Governor was successfully created." }
-        format.json { render :show, status: :created, location: @governor }
-      else
+    if Governor.where(date: @governor.date, state: @governor.state).exists?
+      respond_to do |format|
+        @governor.errors.add(:date, 'This race already exists!')
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @governor.errors, status: :unprocessable_entity }
       end
+    else
+      respond_to do |format|
+        if @governor.save
+          format.html { redirect_to governor_url(@governor), notice: "Governor Race was successfully created." }
+          format.json { render :show, status: :created, location: @governor }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @governor.errors, status: :unprocessable_entity }
+        end
+      end
     end
+
   end
 
   # PATCH/PUT /governors/1 or /governors/1.json
@@ -47,6 +59,30 @@ class GovernorsController < ApplicationController
         format.json { render json: @governor.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+
+  def add_bulk_races
+    year = params[:governor][:date]
+    delete_all_races(params[:governor][:date])
+
+    races = params[:governor][:state]
+
+    for state in races do
+      @governor = Governor.new(date: year, state: state)
+      if Governor.where(date: @governor.date, state: @governor.state).exists? or state=="type checkbox"
+        # SKIP
+      else
+
+        if @governor.save
+          #Yay, do nothing
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @governor.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+    redirect_to action: "index"
   end
 
   # DELETE /governors/1 or /governors/1.json
@@ -69,4 +105,9 @@ class GovernorsController < ApplicationController
     def governor_params
       params.require(:governor).permit(:date, :state)
     end
+
+    def delete_all_races(year)
+      Governor.where(date: year).destroy_all
+    end
+
 end

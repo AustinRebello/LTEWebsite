@@ -25,13 +25,21 @@ class PresidentsController < ApplicationController
   def create
     @president = President.new(president_params)
 
-    respond_to do |format|
-      if @president.save
-        format.html { redirect_to president_url(@president), notice: "President was successfully created." }
-        format.json { render :show, status: :created, location: @president }
-      else
+    if President.where(date: @president.date, state: @president.state).exists?
+      respond_to do |format|
+        @president.errors.add(:date, 'This race already exists!')
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @president.errors, status: :unprocessable_entity }
+      end
+    else
+      respond_to do |format|
+        if @president.save
+          format.html { redirect_to president_url(@president), notice: "President was successfully created." }
+          format.json { render :show, status: :created, location: @president }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @president.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -63,6 +71,7 @@ class PresidentsController < ApplicationController
     year = params[:president][:date]
     delete_all_races(params[:president][:date])
 
+    
     races = return_states()
 
     for state in races do

@@ -13,6 +13,63 @@ class ApplicationController < ActionController::Base
         
     end
 
+
+    def return_house_seats
+
+        return [
+            ["HI", 2],
+            ["AK", 1],
+            ["FL", 28],
+            ["SC", 7],
+            ["GA", 14],
+            ["AL", 7],
+            ["NC", 14],
+            ["TN", 9],
+            ["RI", 2],
+            ["CT", 5],
+            ["MA", 9],
+            ["ME", 2],
+            ["NH", 2],
+            ["VT", 1],
+            ["NY", 26],
+            ["NJ", 12],
+            ["PA", 17],
+            ["DE", 1],
+            ["MD", 8],
+            ["WV", 2],
+            ["KY", 6],
+            ["OH", 15],
+            ["MI", 13],
+            ["WY", 1],
+            ["MT", 2],
+            ["ID", 2],
+            ["WA", 10],
+            ["TX", 38],
+            ["CA", 52],
+            ["AZ", 9],
+            ["NV", 4],
+            ["UT", 4],
+            ["CO", 8],
+            ["NM", 3],
+            ["OR", 6],
+            ["ND", 1],
+            ["SD", 1],
+            ["NE", 3],
+            ["IA", 4],
+            ["MS", 4],
+            ["IN", 9],
+            ["IL", 17],
+            ["MN", 8],
+            ["WI", 8],
+            ["MO", 8],
+            ["AR", 4],
+            ["OK", 5],
+            ["KS", 4],
+            ["LA", 6],
+            ["VA", 11]
+        ]
+    end
+
     def return_states
         return ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA", "ME", "NH", "VT", "NY", "NJ" ,"PA", "DE", "MD", "WV", "KY", "OH" ,"MI", "WY", "MT",
             "ID", "WA", "TX", "CA", "AZ", "NV", "UT", "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", "WI", "MO", "AR", "OK", "KS", "LA", "VA", "DC"]

@@ -24,13 +24,24 @@ class HousesController < ApplicationController
   def create
     @house = House.new(house_params)
 
-    respond_to do |format|
-      if @house.save
-        format.html { redirect_to house_url(@house), notice: "House was successfully created." }
-        format.json { render :show, status: :created, location: @house }
-      else
+    @newHouse = House.where(date: @house.date, state: @house.state, seat: @house.seat).exists?
+    puts @newHouse
+
+    if House.where(date: @house.date, state: @house.state, seat: @house.seat).exists?
+      respond_to do |format|
+        @house.errors.add(:date, 'This race already exists!')
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @house.errors, status: :unprocessable_entity }
+      end
+    else
+      respond_to do |format|
+        if @house.save
+          format.html { redirect_to house_url(@house), notice: "House was successfully created." }
+          format.json { render :show, status: :created, location: @house }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @house.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -58,6 +69,26 @@ class HousesController < ApplicationController
     end
   end
 
+  def add_all_races
+    year = params[:house][:date]
+    delete_all_races(params[:house][:date])
+
+    races = return_house_seats()
+
+    for state in races do
+      for district in 1..state[1] do
+        @house = House.new(date: year, state: state[0], seat: district)
+        if @house.save
+          #Yay, do nothing
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @house.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+    redirect_to action: "index"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_house
@@ -67,5 +98,13 @@ class HousesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def house_params
       params.require(:house).permit(:date, :state, :seat)
+    end
+
+    def delete_all_races(year)
+      House.where(date: year).destroy_all
+    end
+
+    def house_race_exists(date, state, seat)
+      
     end
 end
