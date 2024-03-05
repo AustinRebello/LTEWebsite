@@ -100,7 +100,36 @@
 
 </div>
 
-
-
-
 </div>
+
+<script>
+
+var brown = new ResultCandidate(
+    "Sherrod", "Brown", "https://equalcitizens.us/wp-content/uploads/2021/04/Sherrod_Brown_official_photo_2009_2-min.png", "Democrat", "#0047ff", 1000
+)
+var trump = new ResultCandidate(
+    "Donald", "Trump", "https://interactive.guim.co.uk/atoms/2024/01/primaries/assets/v/1708685778194/trump.png", "Republican", "#cf0042", 1300
+)
+var swiftlysalted = new ResultCandidate(
+    "Swiftly", "Salted", "https://u.realgeeks.media/georgiaar/Harrison_rg.png", "Ruby on Rails", "#520c17", 2704
+)
+
+var mapData = new ResultMapData();
+
+$(document).ready(function(){
+
+    var elem = $(".results-box");
+
+    populateResults(elem, [brown, trump, swiftlysalted], new ResultData(
+
+        "2024 Ohio Senate",
+        5004,
+        22,
+        swiftlysalted
+
+    ), mapData);
+
+});
+
+
+</script>

@@ -26,8 +26,6 @@ class ResultData {
         this.raceName = raceName;
         this.totalVotes = totalVotes;
         this.pctReporting = pctReporting;
-        this.candidates = candidates;
-        this.mapData = mapData;
         this.projectedWinner = projectedWinner;
 
     }
@@ -59,8 +57,10 @@ function populateResultsReportingBar(element, data){
     reportingElem.find(".results-reporting-bar span").text(`${Math.round(pctReporting)}% Reporting`);
 
     var expectedVotes = Math.round((data.totalVotes / pctReporting) * 100)
+
+    expectedVotes = Math.round(expectedVotes/100)*100
     // TODO: Add timestamp
-    reportingElem.find("span[data-type='expectedVotes']").text(`~${numberWithCommas(expectedVotes)} votes expected`);
+    reportingElem.find("p[data-type='expectedVotes']").text(`~${numberWithCommas(expectedVotes)} votes expected`);
 }
 
 function populateResultsCandidates(element, candidates, data){
@@ -68,11 +68,12 @@ function populateResultsCandidates(element, candidates, data){
     var table = $(element).find(".results-table");
 
     // Remove existing entries
-    table.find("tr").remove();
+    table.find("tr.results-candidateTable").remove();
 
     candidates = candidates.sort((a, b) => {
-        if(a.votes < b.votes) return -1;
-        return 1;
+        if(a.votes < b.votes) return 1;
+        if(a.votes > b.votes) return -1;
+        return 0;
     })
 
     for(var candidate of candidates){
@@ -81,12 +82,11 @@ function populateResultsCandidates(element, candidates, data){
         var votes = numberWithCommas(candidate.votes);
 
         $(`<tr class='results-candidateTable' style='background-color: ${candidate.color}'>
-        
-            <td>
+            <td></td>
+            <td data-type='name'>
                 <span>${candidate.firstName} ${candidate.lastName}</span><br/>
-                <span>${candidate.party}</span>
+                <span><i>${candidate.party}</i></span>
             </td>
-            <td data-type='name'></td>
             <td data-type='percent'>${percent}</td>
             <td data-type='votes'>${votes}</td>
         </tr>
@@ -102,14 +102,17 @@ function populateResultsHeader(element, data){
     var header = $(element).find(".results-header");
 
     var headerBgColor = DEFAULT_COLOR;
-    var headerName = "Not Called", headerText = "This race has not been called yet.", headerPct = "", headerVotes = "";
-
-    // TODO: Add Image Support
+    var headerName = "Not Called",
+        headerText = "This race has not been called yet.",
+        headerPct = "",
+        headerImage = "https://imagedelivery.net/ilUJ6Cy8nNz2i8r1DPuCPg/e9b30734-2df1-4072-0668-817972697d00/public";
+        headerVotes = "";
 
     if(data.projectedWinner){
         headerBgColor = data.projectedWinner.color;
         headerName = data.projectedWinner.lastName;
         headerText = "Projected Winner";
+        headerImage = data.projectedWinner.imageUrl;
         
         headerPct = `${((data.projectedWinner.votes / data.totalVotes)*100).toFixed(2)}%`;
         headerVotes = numberWithCommas(data.projectedWinner.votes);
@@ -117,6 +120,8 @@ function populateResultsHeader(element, data){
     }
 
     header.css("background", `linear-gradient(45deg, #111111 0%, ${headerBgColor} 100%)`);
+    header.find("img").attr("src", headerImage);
+
     var candNameElem = header.find(".results-candidate-name");
     candNameElem.find("h2").text(headerName);
     candNameElem.find("p").text(headerText);
