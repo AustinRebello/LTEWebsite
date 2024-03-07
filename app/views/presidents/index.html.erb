@@ -1,3 +1,5 @@
+<div class="container">
+
 <p style="color: green"><%= notice %></p>
 
 <h1 class="text-white" style=" width:25%; margin-left: auto; margin-right: auto;">Presidential Election</h1>
@@ -37,8 +39,8 @@ $(document).mousemove(function(e) {
 
 var ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 if(ios) {
-  $('a').on('click touchend', function() { 
-    var link = $(this).attr('href');   
+  $('a').on('click touchend', function() {
+    var link = $(this).attr('href');
     window.open(link,'_blank');
     return false;
   });

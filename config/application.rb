@@ -17,6 +17,10 @@ module LtElections
     config.autoload_lib(ignore: %w(assets tasks))
 
     config.public_file_server.enabled = true
+
+    config.sass.preferred_syntax = ":sass"
+    config.sass.line_comments = false
+    config.sass.cache = false
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :news
   resources :miscs
 
-  resources :presidents do 
+  resources :presidents do
     collection do
       post :add_all_races
     end
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     end
   end
   
+  get 'test/index'
   get 'home/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
