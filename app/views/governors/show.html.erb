@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @governor %>
+<% if user_signed_in? && current_user.admin? %>
+  <p style="color: green"><%= notice %></p>
 
-<div>
-  <%= link_to "Edit this governor", edit_governor_path(@governor) %> |
-  <%= link_to "Back to governors", governors_path %>
+  <%= render @governor %>
 
-  <%= button_to "Destroy this governor", @governor, method: :delete %>
+  <div>
+    <%= link_to "Edit this governor", edit_governor_path(@governor) %> |
+    <%= link_to "Back to governors", governors_path %>
+
+    <%= button_to "Destroy this governor", @governor, method: :delete %>
+  </div>
+<% else %>
+<!-- TOADS COMMAND HERE -->
+<div class="container large page">
+<%= render "common/results" %>
 </div>
+<% end %>

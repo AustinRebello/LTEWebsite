@@ -1,13 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<% if user_signed_in? && current_user.admin? %>
+  <p style="color: green"><%= notice %></p>
 
-<%= render @house %>
+  <%= render @house %>
 
-<div>
-  <%= link_to "Edit this house", edit_house_path(@house) %> |
-  <%= link_to "Back to houses", houses_path %>
+  <div>
+    <%= link_to "Edit this house", edit_house_path(@house) %> |
+    <%= link_to "Back to houses", houses_path %>
 
-  <%= button_to "Destroy this house", @house, method: :delete %>
+    <%= button_to "Destroy this house", @house, method: :delete %>
+  </div>
+<% else %>
+<!-- TOADS COMMAND HERE -->
+<div class="container large page">
+<%= render "common/results" %>
 </div>
+<% end %>
+
+
 
 
 <script>

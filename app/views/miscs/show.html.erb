@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<% if user_signed_in? && current_user.admin? %>
+  <p style="color: green"><%= notice %></p>
 
-<%= render @misc %>
+  <%= render @misc %>
 
-<div>
-  <%= link_to "Edit this misc", edit_misc_path(@misc) %> |
-  <%= link_to "Back to miscs", miscs_path %>
+  <div>
+    <%= link_to "Edit this misc", edit_misc_path(@misc) %> |
+    <%= link_to "Back to miscs", miscs_path %>
 
-  <%= button_to "Destroy this misc", @misc, method: :delete %>
+    <%= button_to "Destroy this misc", @misc, method: :delete %>
+  </div>
+<% else %>
+<!-- TOADS COMMAND HERE -->
+<div class="container large page">
+<%= render "common/results" %>
 </div>
+<% end %>

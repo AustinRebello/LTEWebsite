@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<% if user_signed_in? && current_user.admin? %>
+  <p style="color: green"><%= notice %></p>
 
-<%= render @senate %>
+  <%= render @senate %>
 
-<div>
-  <%= link_to "Edit this senate", edit_senate_path(@senate) %> |
-  <%= link_to "Back to senates", senates_path %>
+  <div>
+    <%= link_to "Edit this senate", edit_senate_path(@senate) %> |
+    <%= link_to "Back to senate", senates_path %>
 
-  <%= button_to "Destroy this senate", @senate, method: :delete %>
+    <%= button_to "Destroy this senate", @senate, method: :delete %>
+  </div>
+<% else %>
+<!-- TOADS COMMAND HERE -->
+<div class="container large page">
+<%= render "common/results" %>
 </div>
+<% end %>
