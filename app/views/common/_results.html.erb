@@ -18,8 +18,8 @@
             </div>
         </div>
 
-        <div class="results-bar">
-            <p class="font-bold">2024 ELECTION: OHIO SENATE</p>
+        <div id="raceTitle" class="results-bar">
+            <p class="font-bold raceTitle">2024 ELECTION: OHIO SENATE</p>
         </div>
 
         <div class="results-bar gray unpadded">
@@ -102,34 +102,105 @@
 
 </div>
 
+
 <script>
 
-var brown = new ResultCandidate(
-    "Sherrod", "Brown", "https://equalcitizens.us/wp-content/uploads/2021/04/Sherrod_Brown_official_photo_2009_2-min.png", "Democrat", "#0047ff", 1000
-)
-var trump = new ResultCandidate(
-    "Donald", "Trump", "https://interactive.guim.co.uk/atoms/2024/01/primaries/assets/v/1708685778194/trump.png", "Republican", "#cf0042", 1300
-)
-var swiftlysalted = new ResultCandidate(
-    "Swiftly", "Salted", "https://u.realgeeks.media/georgiaar/Harrison_rg.png", "Ruby on Rails", "#520c17", 2704
-)
+    async function getData(){
+        var url = '<%= @url %>';
+        const response = await fetch(url);
+        const data = await response.json();
 
-var mapData = new ResultMapData();
+        var newData = parseData(data);
+        return newData;
+    };
 
-$(document).ready(function(){
+    function parseData(data){
+        console.log(data);
+        race_title = data.ltedata.raceTitle;
+        total_votes = data.ltedata.totalVotes;
+        percent_reporting = data.ltedata.percentReporting;
+        race_status = data.ltedd[0].winnerFullName;
+        candidate_objects = [];
+        for(let i = 0; i<data.ltedata.candidates.length; i++){
+            var party = returnParty(data.ltedata.candidates[i].party)
+        candidate_objects.push(new ResultCandidate(
+            data.ltedata.candidates[i].firstName,
+            data.ltedata.candidates[i].lastName,
+            data.ltedata.candidates[i].fullName,
+            data.ltedata.candidates[i].candidateImage,
+            party[0],
+            party[1],
+            data.ltedata.candidates[i].votes
+        ))
+        }
 
-    var elem = $(".results-box");
+        return [[race_title, total_votes, percent_reporting, race_status],candidate_objects, data.ltedata.countyResults]
+    };
+  
+    function returnParty(party){
+        switch(party){
+            case "DEM":
+                return ["Democrat","#0047ff"];
+                break;
+            case "GOP":
+                return ["Republican","#cf0042"];
+                break;
+            case "NPP":
+                return ["Independent","#c3c3c3"];
+                break;
+            case "LIB":
+                return ["Libertarian","#efe210"];
+                break;
+            case "GRN":
+                return ["Green","#11b900"];
+                break;
+            case "AIP":
+                return ["Other","#000000"];
+                break;
+        }
+        return ["NOT FOUND", "#AAAAAA"]
 
-    populateResults(elem, [brown, trump, swiftlysalted], new ResultData(
+    }
 
-        "2024 Ohio Senate",
-        5004,
-        22,
-        swiftlysalted
 
-    ), mapData);
 
-});
+    function calculateWinnerObject(candidates, winner){
+        for(let i = 0; i<candidates.length; i++){
+            if(candidates[i].fullName === winner){
+                return candidates[i]
+            }
+        }
+        //FUTURE FUNCTIONALITY FOR TOO EARLY TO CALL, TOO CLOSE TO CALL, AWAITING RESULTS
+        return null
+    }
+
+
+    (function(){
+    var refresh = function() {
+        getData().then((data) => {
+            var results = data;
+
+            var candidates = results[1];
+            var resultData = new ResultData(results[0][0], results[0][1], results[0][2], calculateWinnerObject(candidates, results[0][3]));
+            var mapData = new ResultMapData(results[2]);
+            var elem = $(".results-box");
+
+            populateResults(elem, candidates, resultData, mapData);
+        });
+    };
+    window.setInterval(refresh, 10000);
+    refresh();
+    })();
+
+    
+
+    
+
+    $(document).ready(function(){
+
+        
+
+    });
 
 
 </script>

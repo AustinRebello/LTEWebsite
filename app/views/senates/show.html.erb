@@ -1,4 +1,5 @@
 <% if user_signed_in? && current_user.admin? %>
+<div class="container large page">
   <p style="color: green"><%= notice %></p>
 
   <%= render @senate %>
@@ -9,6 +10,7 @@
 
     <%= button_to "Destroy this senate", @senate, method: :delete %>
   </div>
+</div>
 <% else %>
 <!-- TOADS COMMAND HERE -->
 <div class="container large page">

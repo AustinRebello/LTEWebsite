@@ -9,6 +9,9 @@ class HousesController < ApplicationController
 
   # GET /houses/1 or /houses/1.json
   def show
+
+    @url = "https://api.ltelections.com/races/house%20" + @house.state + "-" + @house.seat
+
   end
 
   # GET /houses/new

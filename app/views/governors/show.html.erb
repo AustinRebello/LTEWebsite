@@ -1,5 +1,6 @@
 
 <% if user_signed_in? && current_user.admin? %>
+<div class="container large page">
   <p style="color: green"><%= notice %></p>
 
   <%= render @governor %>
@@ -10,6 +11,7 @@
 
     <%= button_to "Destroy this governor", @governor, method: :delete %>
   </div>
+</div>
 <% else %>
 <!-- TOADS COMMAND HERE -->
 <div class="container large page">

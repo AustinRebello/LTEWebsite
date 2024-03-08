@@ -1,8 +1,9 @@
 class ResultCandidate {
 
-    constructor(firstName, lastName, imageUrl, party, color, votes){
+    constructor(firstName, lastName, fullName, imageUrl, party, color, votes){
         this.firstName = firstName;
         this.lastName = lastName;
+        this.fullName = fullName;
         this.party = party;
         this.imageUrl = imageUrl;
 
@@ -14,7 +15,7 @@ class ResultCandidate {
 
 class ResultMapData {
 
-    constructor(){
+    constructor(countyList){
         // UNIMPLEMENTED
     }
 
@@ -91,11 +92,7 @@ function populateResultsCandidates(element, candidates, data){
             <td data-type='votes'>${votes}</td>
         </tr>
         `).appendTo(table);
-
     }
-
-
-
 }
 
 function populateResultsHeader(element, data){
@@ -129,4 +126,7 @@ function populateResultsHeader(element, data){
     var candTotalsElem = header.find(".results-candidate-totals");
     candTotalsElem.find("h2").text(headerPct);
     candTotalsElem.find("p").text(headerVotes);
+
+    var reportingElem = $(element).find("#raceTitle");
+    reportingElem.find("p").text(data.raceName);
 }
