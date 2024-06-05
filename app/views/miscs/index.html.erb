@@ -1,14 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="container page">
 
-<h1>Miscellaneous Races</h1>
+  <p style="color: green"><%= notice %></p>
 
-<div id="miscs">
-  <% @miscs.each do |misc| %>
-    <%= render misc %>
-    <p>
-      <%= link_to "Show this misc", misc %>
-    </p>
-  <% end %>
+  <h1 class="text-white" style=" width:50%; margin-left: auto; margin-right: auto;">Miscellaneous Races</h1>
+
+
+  <div id="miscs">
+    <% @miscs.each do |misc| %>
+      <%= render misc %>
+      <p>
+        <%= link_to "Show this misc", misc %>
+      </p>
+    <% end %>
+  </div>
+
+  <% link_to "New misc", new_misc_path %>
 </div>
-
-<% link_to "New misc", new_misc_path %>

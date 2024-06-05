@@ -1,6 +1,6 @@
 <% if user_signed_in? && current_user.admin?%>
     <!-- FORM ONE: SINGULAR STATE -->
-
+  <div class="container page">
     <h1 class = "text-center text-white">Individual Presidential Race</h1>
 
     <%= render "form", president: @president %>
@@ -8,7 +8,7 @@
     <br>
 
     <div>
-      <%= link_to "Back to presidents", presidents_path %>
+      <%= link_to "Back to admin page", admin_index_path %>
     </div>
 
     <!-- FORM TWO: ALL STATES -->
@@ -17,10 +17,10 @@
     <%= form_for @president, :url => {:action => "add_all_races" } do |form| %>
       <%= form.label :date, "Year" %>
       <%= form.text_field :date, :required => true%>
-      <%= form.submit "Generate All Races" %>
+      <%= form.submit "Generate All Races"%>
     <% end %>
 
-
+  </div>
 <% else %>
   <div class="text-center text-white">
     <h1>Oops! You are not authorized to view this page! Sorry, please return to the page you were previously on!</h1>

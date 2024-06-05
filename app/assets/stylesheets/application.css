@@ -69,8 +69,8 @@ path:hover, circle:hover {
   top: 0px;
   left: 0px;
   z-index: 1;
-  background-color: #ffffff;
-  border: 2px solid #BF0A30;
+  background-color: #002868;
+  border: 2px solid #000000;
   border-radius: 5px;
   padding: 5px;
   font-family: arial;
@@ -90,31 +90,29 @@ path:hover, circle:hover {
 
 
 
-
-
 /* Admin Page CSS */
 
 .evt-tab-inner {
-margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 .evt-tab-inner ul {
-margin: 0;
-padding: 0;
-border: 0 !important;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
 }
 .evt-tab-inner ul li {
-text-align: center;
-display: contents;
+  text-align: center;
+  display: contents;
 }
 .evt-tab-inner ul li a {
-border: 1px solid var(--main-color) !important;
-height: 100px;
-line-height: 100px;
-padding: 0;
-width: 33.33%;
-border-radius: 0 !important;
-font-size: 24px;
-position: relative;
+  border: 1px solid var(--main-color) !important;
+  height: 100px;
+  line-height: 100px;
+  padding: 0;
+  width: 33.33%;
+  border-radius: 0 !important;
+  font-size: 24px;
+  position: relative;
 }
 .evt-tab-inner ul li a span {
   font-weight: 700;
@@ -186,4 +184,8 @@ width: 50%;
 .nav-link {
   display: block;
   padding: .5rem 1rem;
+}
+
+input, button {
+  color:#000000 !important;
 }

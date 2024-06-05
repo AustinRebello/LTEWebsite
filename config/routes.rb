@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'admin/index'
   get 'admin/super'
   post 'admin/toggle_admin'
-  devise_for :users
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   resources :news
   resources :miscs
 
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
   resources :houses do
     collection do
       post :add_all_races
+      get :state_races
     end
   end
   

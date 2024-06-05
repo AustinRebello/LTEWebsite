@@ -1,0 +1,10 @@
+<div class="container page">
+    <h1 class="text-white" style=" width:50%; margin-left: auto; margin-right: auto; text-align:center;">House Races in <%= @list[0][@state_number] %></h1>
+
+    <div id="houses">
+    <% @houses.each do |house| %>
+        <%= render house %>
+    <% end %>
+    </div>
+</div>
+

@@ -3,26 +3,27 @@
 
 
 
+    <div class="container page">
+      <!-- Form One, singular US house -->
+      <h1>New house</h1>
 
-    <!-- Form One, singular US house -->
-    <h1>New house</h1>
+      <%= render "form", house: @house %>
 
-    <%= render "form", house: @house %>
+      <br>
 
-    <br>
+      <div>
+        <%= link_to "Back to admin page", admin_index_path %>
+      </div>
 
-    <div>
-      <%= link_to "Back to houses", houses_path %>
+      <!-- FORM TWO: ALL STATES -->
+      <h1 class = "text-center text-white">All 400+ House Races</h1>
+      <h2 class = "text-center text-white">WARNING: THIS WILL DELETE ALL CURRENT HOUSE RACES (Not that it really matters)</h2>
+      <%= form_for @house, :url => {:action => "add_all_races" } do |form| %>
+        <%= form.label :date, "Year" %>
+        <%= form.text_field :date, :required => true%>
+        <%= form.submit "Generate All Races" %>
+      <% end %>
     </div>
-
-    <!-- FORM TWO: ALL STATES -->
-    <h1 class = "text-center text-white">All 400+ House Races</h1>
-    <h2 class = "text-center text-white">WARNING: THIS WILL DELETE ALL CURRENT HOUSE RACES (Not that it really matters)</h2>
-    <%= form_for @house, :url => {:action => "add_all_races" } do |form| %>
-      <%= form.label :date, "Year" %>
-      <%= form.text_field :date, :required => true%>
-      <%= form.submit "Generate All Races" %>
-    <% end %>
 
 
 

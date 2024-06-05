@@ -1,3 +1,8 @@
+<!-- TOADS COMMAND HERE -->
+<div class="container large page">
+<%= render "common/results" %>
+</div>
+
 <% if user_signed_in? && current_user.admin? %>
 <div class="container large page">
   <p style="color: green"><%= notice %></p>
@@ -10,10 +15,5 @@
 
     <%= button_to "Destroy this misc", @misc, method: :delete %>
   </div>
-</div>
-<% else %>
-<!-- TOADS COMMAND HERE -->
-<div class="container large page">
-<%= render "common/results" %>
 </div>
 <% end %>

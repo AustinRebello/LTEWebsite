@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <% if current_user.admin? %>
 
-
+  <div class="container page">
     <h1>New senate</h1>
 
     <%= render "form", senate: @senate %>
@@ -9,7 +9,7 @@
     <br>
 
     <div>
-      <%= link_to "Back to senates", senates_path %>
+      <%= link_to "Back to admin page", admin_index_path %>
     </div>
 
 
@@ -18,16 +18,21 @@
     <h1 class = "text-center text-white">Bulk Add Senate Races</h1>
     <h2 class = "text-center text-white">WARNING: THIS WILL DELETE ALL CURRENT STATES (Not that it really matters)</h2>
     <%= form_for @senate, :url => {:action => "add_bulk_races" } do |form| %>
-      <%= form.label :date, "Year" %>
-      <%= form.text_field :date, :required => true%>
+      <div>
+        <%= form.label :date, "Year", class:"text-white" %>
+        <%= form.text_field :date, :required => true%>
+      </div>
       <!-- Logic goes here for check box states -->
       <% for state in @states do %>
+        <div class="px-3" style="border:2px solid black;width:5%;float:left;">
           <%= form.check_box :state, { multiple: true }, state, type:"checkbox"%>
           <%= form.label state, class:"text-white text-uppercase" %>
-        <% end %>
-      <%= form.submit "Generate Bulk Races" %>
+        </div>
+      <% end %>
+           
+      <%= form.submit "Generate Bulk Races"%>
     <% end %>
-
+  </div>
 
 
 

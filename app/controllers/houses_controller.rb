@@ -5,6 +5,8 @@ class HousesController < ApplicationController
   # GET /houses or /houses.json
   def index
     @houses = House.all
+    @presidents = President.all
+    @list = generate_nested_lists()
   end
 
   # GET /houses/1 or /houses/1.json
@@ -21,6 +23,13 @@ class HousesController < ApplicationController
 
   # GET /houses/1/edit
   def edit
+  end
+
+  def state_races
+    @list = generate_nested_lists()
+    @state_number = params[:state_number].to_i
+    puts(@list[0][@state_number])
+    @houses = House.where(state: @list[0][@state_number])
   end
 
   # POST /houses or /houses.json

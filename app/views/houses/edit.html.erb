@@ -1,10 +1,12 @@
-<h1>Editing house</h1>
+<div class="container page">
+  <h1>Editing house</h1>
 
-<%= render "form", house: @house %>
+  <%= render "form", house: @house %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this house", @house %> |
-  <%= link_to "Back to houses", houses_path %>
+  <div>
+    <%= link_to "Show this house", @house %> |
+    <%= link_to "Back to houses", houses_path %>
+  </div>
 </div>
